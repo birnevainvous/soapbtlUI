@@ -28,8 +28,10 @@ public class ObjectFactory {
     private final static QName _TimeSheetSubmitResponse_QNAME = new QName("http://ws/", "timeSheetSubmitResponse");
     private final static QName _LoginResponse_QNAME = new QName("http://ws/", "loginResponse");
     private final static QName _AddInvoiceResponse_QNAME = new QName("http://ws/", "addInvoiceResponse");
+    private final static QName _FindAllEmployee_QNAME = new QName("http://ws/", "findAllEmployee");
     private final static QName _History_QNAME = new QName("http://ws/", "history");
     private final static QName _Employee_QNAME = new QName("http://ws/", "employee");
+    private final static QName _FindAllEmployeeResponse_QNAME = new QName("http://ws/", "findAllEmployeeResponse");
     private final static QName _Login_QNAME = new QName("http://ws/", "login");
     private final static QName _Exception_QNAME = new QName("http://ws/", "Exception");
     private final static QName _FindAllInvoiceResponse_QNAME = new QName("http://ws/", "findAllInvoiceResponse");
@@ -79,6 +81,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindAllEmployee }
+     * 
+     */
+    public FindAllEmployee createFindAllEmployee() {
+        return new FindAllEmployee();
+    }
+
+    /**
      * Create an instance of {@link History }
      * 
      */
@@ -92,6 +102,14 @@ public class ObjectFactory {
      */
     public Employee createEmployee() {
         return new Employee();
+    }
+
+    /**
+     * Create an instance of {@link FindAllEmployeeResponse }
+     * 
+     */
+    public FindAllEmployeeResponse createFindAllEmployeeResponse() {
+        return new FindAllEmployeeResponse();
     }
 
     /**
@@ -227,6 +245,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllEmployee }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "findAllEmployee")
+    public JAXBElement<FindAllEmployee> createFindAllEmployee(FindAllEmployee value) {
+        return new JAXBElement<FindAllEmployee>(_FindAllEmployee_QNAME, FindAllEmployee.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link History }{@code >}}
      * 
      */
@@ -242,6 +269,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws/", name = "employee")
     public JAXBElement<Employee> createEmployee(Employee value) {
         return new JAXBElement<Employee>(_Employee_QNAME, Employee.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllEmployeeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "findAllEmployeeResponse")
+    public JAXBElement<FindAllEmployeeResponse> createFindAllEmployeeResponse(FindAllEmployeeResponse value) {
+        return new JAXBElement<FindAllEmployeeResponse>(_FindAllEmployeeResponse_QNAME, FindAllEmployeeResponse.class, null, value);
     }
 
     /**

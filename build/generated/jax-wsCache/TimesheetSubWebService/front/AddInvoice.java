@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="arg4" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="arg5" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="arg6" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="arg7" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,7 +40,8 @@ import javax.xml.bind.annotation.XmlType;
     "arg3",
     "arg4",
     "arg5",
-    "arg6"
+    "arg6",
+    "arg7"
 })
 public class AddInvoice {
 
@@ -50,6 +52,7 @@ public class AddInvoice {
     protected int arg4;
     protected int arg5;
     protected String arg6;
+    protected String arg7;
 
     /**
      * Gets the value of the arg0 property.
@@ -201,6 +204,30 @@ public class AddInvoice {
      */
     public void setArg6(String value) {
         this.arg6 = value;
+    }
+
+    /**
+     * Gets the value of the arg7 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getArg7() {
+        return arg7;
+    }
+
+    /**
+     * Sets the value of the arg7 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setArg7(String value) {
+        this.arg7 = value;
     }
 
 }

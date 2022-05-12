@@ -6,18 +6,23 @@
 package front;
 
 import javax.swing.JOptionPane;
+import front.EmployeeModel;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
  * @author Admin
  */
 public class LoginFrame extends javax.swing.JFrame {
-
+    EmployeeModel employeeModel;
     /**
      * Creates new form LoginFrame
      */
     public LoginFrame() {
         initComponents();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /**
@@ -32,8 +37,8 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +60,9 @@ public class LoginFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(btnLogin))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -62,10 +70,7 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(txtPassword)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(btnLogin)))
+                            .addComponent(txtPassword))))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,12 +101,33 @@ public class LoginFrame extends javax.swing.JFrame {
             return;
         }
         
-        EmployeeModel employeeModel = login(username, password);
+        employeeModel = login(username, password);
         if (employeeModel == null) {
             JOptionPane.showMessageDialog(rootPane, "Login Failed!");
         }
         else{
-            JOptionPane.showMessageDialog(rootPane, "Login Success!");
+            if (employeeModel.getRole().equals("worker")) {
+                /* Create and display the form */
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        WorkerJFrame wframe = new WorkerJFrame(employeeModel);                       
+                        wframe.setTitle("Giao diện nhân viên.");
+                        wframe.setVisible(true);
+                        setVisible(false);
+                    }
+                });
+            }
+            else if (employeeModel.getRole().equals("arClerk")) {
+                /* Create and display the form */
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        CleckJFrame cframe = new CleckJFrame(employeeModel);                       
+                        cframe.setTitle("Giao diện thư ký.");
+                        cframe.setVisible(true);
+                        setVisible(false);
+                    }
+                });
+            }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -131,11 +157,16 @@ public class LoginFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginFrame().setVisible(true);
+                LoginFrame lg = new LoginFrame();
+                lg.setTitle("Đăng nhập");
+                lg.setVisible(true);
             }
         });
     }
@@ -144,7 +175,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
@@ -153,4 +184,8 @@ public class LoginFrame extends javax.swing.JFrame {
         front.TimesheetSubWebService port = service.getTimesheetSubWebServicePort();
         return port.login(arg0, arg1);
     }
+
+    
+
+    
 }

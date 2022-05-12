@@ -28,18 +28,6 @@ public interface TimesheetSubWebService {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<front.History>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findHistoryByWorkerId", targetNamespace = "http://ws/", className = "front.FindHistoryByWorkerId")
-    @ResponseWrapper(localName = "findHistoryByWorkerIdResponse", targetNamespace = "http://ws/", className = "front.FindHistoryByWorkerIdResponse")
-    @Action(input = "http://ws/TimesheetSubWebService/findHistoryByWorkerIdRequest", output = "http://ws/TimesheetSubWebService/findHistoryByWorkerIdResponse")
-    public List<History> findHistoryByWorkerId();
-
-    /**
-     * 
      * @param arg1
      * @param arg0
      * @return
@@ -58,11 +46,37 @@ public interface TimesheetSubWebService {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<front.Invoice>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findAllInvoice", targetNamespace = "http://ws/", className = "front.FindAllInvoice")
+    @ResponseWrapper(localName = "findAllInvoiceResponse", targetNamespace = "http://ws/", className = "front.FindAllInvoiceResponse")
+    @Action(input = "http://ws/TimesheetSubWebService/findAllInvoiceRequest", output = "http://ws/TimesheetSubWebService/findAllInvoiceResponse")
+    public List<Invoice> findAllInvoice();
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<front.Employee>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findAllEmployee", targetNamespace = "http://ws/", className = "front.FindAllEmployee")
+    @ResponseWrapper(localName = "findAllEmployeeResponse", targetNamespace = "http://ws/", className = "front.FindAllEmployeeResponse")
+    @Action(input = "http://ws/TimesheetSubWebService/findAllEmployeeRequest", output = "http://ws/TimesheetSubWebService/findAllEmployeeResponse")
+    public List<Employee> findAllEmployee();
+
+    /**
+     * 
      * @param arg3
      * @param arg2
+     * @param arg5
      * @param arg4
      * @param arg1
      * @param arg0
+     * @param arg6
      * @return
      *     returns java.lang.String
      * @throws Exception_Exception
@@ -84,7 +98,11 @@ public interface TimesheetSubWebService {
         @WebParam(name = "arg3", targetNamespace = "")
         String arg3,
         @WebParam(name = "arg4", targetNamespace = "")
-        int arg4)
+        int arg4,
+        @WebParam(name = "arg5", targetNamespace = "")
+        int arg5,
+        @WebParam(name = "arg6", targetNamespace = "")
+        String arg6)
         throws Exception_Exception
     ;
 
@@ -96,6 +114,7 @@ public interface TimesheetSubWebService {
      * @param arg4
      * @param arg1
      * @param arg0
+     * @param arg7
      * @param arg6
      * @return
      *     returns java.lang.String
@@ -119,18 +138,23 @@ public interface TimesheetSubWebService {
         @WebParam(name = "arg5", targetNamespace = "")
         int arg5,
         @WebParam(name = "arg6", targetNamespace = "")
-        String arg6);
+        String arg6,
+        @WebParam(name = "arg7", targetNamespace = "")
+        String arg7);
 
     /**
      * 
+     * @param arg0
      * @return
-     *     returns java.util.List<front.Invoice>
+     *     returns java.util.List<front.History>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findAllInvoice", targetNamespace = "http://ws/", className = "front.FindAllInvoice")
-    @ResponseWrapper(localName = "findAllInvoiceResponse", targetNamespace = "http://ws/", className = "front.FindAllInvoiceResponse")
-    @Action(input = "http://ws/TimesheetSubWebService/findAllInvoiceRequest", output = "http://ws/TimesheetSubWebService/findAllInvoiceResponse")
-    public List<Invoice> findAllInvoice();
+    @RequestWrapper(localName = "findHistoryByWorkerId", targetNamespace = "http://ws/", className = "front.FindHistoryByWorkerId")
+    @ResponseWrapper(localName = "findHistoryByWorkerIdResponse", targetNamespace = "http://ws/", className = "front.FindHistoryByWorkerIdResponse")
+    @Action(input = "http://ws/TimesheetSubWebService/findHistoryByWorkerIdRequest", output = "http://ws/TimesheetSubWebService/findHistoryByWorkerIdResponse")
+    public List<History> findHistoryByWorkerId(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
 
 }
